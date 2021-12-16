@@ -23,7 +23,7 @@ public class LastAddresDeleteFormPage extends BasePage {
     public WebElement getLastAddressToDelete() {
         List<WebElement> addressesList = lista;
 
-        for (int i = 0; i <addressesList.size(); i++) {
+        for (int i = 0; i < addressesList.size(); i++) {
             WebElement x = addressesList.get(addressesList.size() - 1);
             addressesList.set(0, x);
         }

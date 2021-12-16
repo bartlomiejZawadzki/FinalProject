@@ -18,7 +18,7 @@ import java.util.concurrent.TimeUnit;
 public class NewAddressSteps {
     private WebDriver driver;
 
-    @Given("user logged in and at the address page")
+    @Given("user logged in address page")
     public void logInToAddress() {
         System.setProperty("webdriver.chrome.driver", "src/main/resources/drivers/chromedriver.exe");
         driver = new ChromeDriver();
@@ -30,7 +30,7 @@ public class NewAddressSteps {
 
     }
 
-    @When("clicking the link Create a new address")
+    @When("creating a new address")
     public void createNewAddress() {
         WebElement addressButton = driver.findElement(By.xpath("//*[@id=\"addresses-link\"]/span"));
         addressButton.click();
@@ -38,7 +38,7 @@ public class NewAddressSteps {
         createNewAddresLink.click();
     }
 
-    @Then("^fill out and save the form \"(.*)\" \"(.*)\" \"(.*)\" \"(.*)\" \"(.*)\" \"(.*)\"$")
+    @Then("^filling in the address form with data \"(.*)\" \"(.*)\" \"(.*)\" \"(.*)\" \"(.*)\" \"(.*)\"$")
     public void fillForm(String alias, String street, String city, String zipCode, String country, String phone) {
 
         WebElement aliasInput = driver.findElement(By.name("alias"));
@@ -75,18 +75,13 @@ public class NewAddressSteps {
     }
 
 
-    @And("^check if the newly created address \"(.*)\" is correct$")
-    public void checkAddress(String alias) {
-
+    @And("^checking the correctness of the new address$")
+    public void checkAddress() {
         List<WebElement> addressesList = driver.findElements(By.className("address-body"));
 
-        for (int i = 0; i < addressesList.size(); i++) {
-            WebElement x = addressesList.get(addressesList.size() - 1);
-            addressesList.set(0, x);}
+        WebElement addedAddress = addressesList.get(addressesList.size()-1);
 
-        WebElement addedAddress = addressesList.get(0);
-
-        Assert.assertEquals("another address\n" + "Bartek Zawadzki\n" + "Polna\n" + "Warszawa\n" + "01-001\n" +
+        Assert.assertEquals("another address9\n" + "Bartek Zawadzki\n" + "Polna\n" + "Warszawa\n" + "01-001\n" +
                 "United Kingdom\n" + "60199222", addedAddress.getText());
     }
 
