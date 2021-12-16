@@ -9,4 +9,4 @@ Feature: Create Address
 
     Examples:
       | alias           | street  | city     | zipCode | country          | phone    |
-      | another address9 | Polna   | Warszawa | 01-001  | United Kingdom   | 60199222 |
+      | another address | Polna   | Warszawa | 01-001  | United Kingdom   | 60199222 |

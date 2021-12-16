@@ -81,7 +81,7 @@ public class NewAddressSteps {
 
         WebElement addedAddress = addressesList.get(addressesList.size()-1);
 
-        Assert.assertEquals("another address9\n" + "Bartek Zawadzki\n" + "Polna\n" + "Warszawa\n" + "01-001\n" +
+        Assert.assertEquals("another address\n" + "Bartek Zawadzki\n" + "Polna\n" + "Warszawa\n" + "01-001\n" +
                 "United Kingdom\n" + "60199222", addedAddress.getText());
     }
 
