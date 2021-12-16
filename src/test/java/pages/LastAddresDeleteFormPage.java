@@ -1,10 +1,10 @@
 package pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -19,20 +19,19 @@ public class LastAddresDeleteFormPage extends BasePage {
     @FindBy(xpath = "//*[@id=\"notifications\"]/div/article")
     private WebElement deleteSuccesMessage;
 
+    @FindBy(xpath = "//span[contains(text(),'Delete')]")
+    List<WebElement> deleteLink;
+
 
     public WebElement getLastAddressToDelete() {
-        List<WebElement> addressesList = lista;
 
-        for (int i = 0; i < addressesList.size(); i++) {
-            WebElement x = addressesList.get(addressesList.size() - 1);
-            addressesList.set(0, x);
-        }
+        List<WebElement> deleteList = new ArrayList<>();
+        deleteList.addAll((deleteLink));
+        WebElement lastAddressdelete = deleteList.get(deleteList.size() - 1);
 
-        WebElement addressTodeleted = addressesList.get(0);
-
-
-        return addressTodeleted.findElement(By.xpath("//*[contains(@data-link-action, 'delete-address')]"));
+        return lastAddressdelete;
     }
+
 
     public String getDeleteSuccesMessage() {
         return deleteSuccesMessage.getText();

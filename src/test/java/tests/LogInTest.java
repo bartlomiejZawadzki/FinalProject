@@ -13,12 +13,14 @@ public class LogInTest extends BaseTest {
 
         String userFirstName = "Bartek";
         String userLastName = "Zawadzki";
+        String mail = "jlcfgaivperdnelxup@kvhrr.com";
+        String pass = "haslo";
 
         UserLogInFormPage logInFormPage = new UserLogInFormPage(driver);
         AddNewAdddressFormPage newAdddressFormPage = new AddNewAdddressFormPage(driver);
 
         //logowanie
-        logInFormPage.logIn("jlcfgaivperdnelxup@kvhrr.com", "haslo");
+        logInFormPage.logIn(mail, pass);
         // sprawdź czy zalogował się poprawny user
         Assert.assertEquals(userFirstName + " " + userLastName, logInFormPage.getUserNameConfirmation());
 

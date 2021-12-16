@@ -17,7 +17,7 @@ import java.util.concurrent.TimeUnit;
 public class DeleteLastAddress   {
     private WebDriver driver;
 
-    @Given("logged in and at addresses page")
+    @Given("logged in address page")
     public void logIntoAddresses(){
         System.setProperty("webdriver.chrome.driver", "src/main/resources/drivers/chromedriver.exe");
         driver = new ChromeDriver();
@@ -28,23 +28,23 @@ public class DeleteLastAddress   {
         logInFormPage.logIn("jlcfgaivperdnelxup@kvhrr.com", "haslo");
     }
 
-    @When("deleting last created address")
+    @When("deleting last added address")
     public void deleteLastAddedAddress(){
         AddNewAdddressFormPage adddressFormPage = new AddNewAdddressFormPage(driver);
         adddressFormPage.addingAddress();
 
-        LastAddresDeleteFormPage help = new LastAddresDeleteFormPage(driver);
-        WebElement lastAddress = help.getLastAddressToDelete();
-        lastAddress.click();
+        LastAddresDeleteFormPage lastAddresDeleteFormPage = new LastAddresDeleteFormPage(driver);
+        lastAddresDeleteFormPage.getLastAddressToDelete().click();
 
-        Assert.assertEquals("Address successfully deleted!", help.getDeleteSuccesMessage());
+        Assert.assertEquals("Address successfully deleted!", lastAddresDeleteFormPage.getDeleteSuccesMessage());
 
     }
 
-    @Then("logout and exit browser")
+    @Then("back to main page")
     public void backToMainPage(){
         WebElement mainPage = driver.findElement(By.xpath("//*[@id=\"main\"]/footer/a[2]"));
         mainPage.click();
+        driver.quit();
     }
 
 
