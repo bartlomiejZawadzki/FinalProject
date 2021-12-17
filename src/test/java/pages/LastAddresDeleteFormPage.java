@@ -1,5 +1,6 @@
 package pages;
 
+import com.google.common.collect.Lists;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -23,13 +24,20 @@ public class LastAddresDeleteFormPage extends BasePage {
     List<WebElement> deleteLink;
 
 
-    public WebElement getLastAddressToDelete() {
+    public WebElement deleteLastAddress() {
 
         List<WebElement> deleteList = new ArrayList<>();
         deleteList.addAll((deleteLink));
-        WebElement lastAddressdelete = deleteList.get(deleteList.size() - 1);
+        WebElement lastAddressDeleteLink = deleteList.get(deleteList.size() - 1);
 
-        return lastAddressdelete;
+        return lastAddressDeleteLink;
+    }
+
+    public List<WebElement> addressesList() {
+
+        List<WebElement> addresslist = new ArrayList<>();
+        addresslist.addAll((deleteLink));
+        return addresslist;
     }
 
 
